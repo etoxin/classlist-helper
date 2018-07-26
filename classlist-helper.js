@@ -5,8 +5,8 @@
  * @param {HTMLElement} element that you want to manipluate the class on.
  * @returns {*}
  */
-function classListHelper(className, method, element) {
+function classlistHelper(className, method, element) {
   return element.classList[method](className);
 }
   
-module.exports = classListHelper;
+module.exports = classlistHelper;
