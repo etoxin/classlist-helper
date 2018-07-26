@@ -8,5 +8,5 @@
 function classlistHelper(className, method, element) {
   return element.classList[method](className);
 }
-  
+
 module.exports = classlistHelper;

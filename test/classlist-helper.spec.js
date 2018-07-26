@@ -23,7 +23,6 @@ describe('classListHelper', function () {
         assert.equal(a, true);
         assert.equal(b, false);
     });
-
     it('should be able to accept all classList single argument methods', function () {
         document.body.innerHTML = testdoms[1];
         let el = document.querySelector('.foo');
@@ -40,7 +39,6 @@ describe('classListHelper', function () {
         assert.equal(el.classList.contains('boom'), false);
         assert.equal(el.classList.contains('kazzam'), false);
     });
-
     it('should add class "boom" to div', () => {
         document.body.innerHTML = testdoms[0];
         let el = document.querySelector('.foo');
@@ -68,5 +66,4 @@ describe('classListHelper', function () {
         assert.equal(el.classList.contains('boom'), false);
         assert.equal(el.classList.contains('foo'), true);
     });
-
 });
