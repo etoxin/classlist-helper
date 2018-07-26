@@ -4,7 +4,8 @@
   "description": "A simple Element.classList helper that can be curried.",
   "main": "classlist-helper.js",
   "scripts": {
-    "test": "nyc mocha --require babel-core/register"
+    "test": "nyc mocha --require babel-core/register",
+    "testwatch": "nyc mocha --watch --require babel-core/register"
   },
   "repository": {
     "type": "git",
