@@ -42,9 +42,6 @@ After running this, the html will look like:
   <li class="item active">item</li>
   <li class="item active">item</li>
   <li class="item active">item</li>
-  <li class="item active">item</li>
-  <li class="item active">item</li>
-  <li class="item active">item</li>
 </ul>
 ```
 
