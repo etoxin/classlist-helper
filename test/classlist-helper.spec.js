@@ -1,4 +1,4 @@
-let assert = require('chai').assert;
+let assert = require('assert');
 let jsdom = require('mocha-jsdom');
 let map = require('lodash').map;
 let curry = require('lodash').curry;
@@ -13,10 +13,12 @@ let testdoms = [
 
 describe('classListHelper', function () {
     jsdom();
-    describe('General tests', function () {
-        it('should be a function', function () {
+    describe('Method tests', function () {
+        it('should be a function', () => {
             assert.equal(typeof classListHelper, 'function');
         });
+    });
+    describe('General tests', function () {
         it('should accepts second argument of "contains" and returns', function () {
             document.body.innerHTML = testdoms[0];
             let el = document.querySelector('.foo');
@@ -78,9 +80,7 @@ describe('classListHelper', function () {
 
             map(els, curry(classListHelper)('zapp')('add'));
 
-            assert(els[0].classList.contains('zapp'), true);
-            assert(els[1].classList.contains('zapp'), true);
-            assert(els[2].classList.contains('zapp'), true);
+            assert.equal(document.body.innerHTML, '<div class="foo bar zapp"></div><div class="foo boom zapp"></div><div class="foo baz zapp"></div>');
         });
         it('should remove class foo on all elements', () => {
             document.body.innerHTML = testdoms[2];
@@ -90,9 +90,31 @@ describe('classListHelper', function () {
 
             map(els, setInactive);
 
-            assert(els[0].classList.contains('foo'), false);
-            assert(els[1].classList.contains('foo'), false);
-            assert(els[2].classList.contains('foo'), false);
+            assert.equal(document.body.innerHTML, '<div class="bar"></div><div class="boom"></div><div class="baz"></div>');
+        });
+        it('should toggle class "boom"', function () {
+            document.body.innerHTML = testdoms[2];
+            let els = document.querySelectorAll('.foo');
+
+            map(els, curry(classListHelper)('boom')('toggle'));
+
+            assert.equal(document.body.innerHTML, '<div class="foo bar boom"></div><div class="foo"></div><div class="foo baz boom"></div>');
+        });
+        it('should test all divs for class "foo", should return all true', function () {
+            document.body.innerHTML = testdoms[2];
+            let els = document.querySelectorAll('.foo');
+
+            let hasFoo = map(els, curry(classListHelper)('foo')('contains'));
+
+            assert.deepEqual(hasFoo, [true, true, true])
+        });
+        it('should test all divs for class "bar", return true, false, false', function () {
+            document.body.innerHTML = testdoms[2];
+            let els = document.querySelectorAll('.foo');
+
+            let hasFoo = map(els, curry(classListHelper)('bar')('contains'));
+
+            assert.deepEqual(hasFoo, [true, false, false])
         });
     });
 });
