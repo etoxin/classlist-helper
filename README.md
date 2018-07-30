@@ -70,4 +70,4 @@ let anyActive = curry(classlistHelper)('active')('contains');
 let setInactive = curry(classlistHelper)(['active', 'inactive'])('replace');
 ```
 
-*Note:* For more examples check the unity tests.
+*Note:* For more examples please check the unit tests.
