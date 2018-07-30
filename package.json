@@ -1,19 +1,34 @@
 {
   "name": "classlist-helper",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A simple Element.classList helper that can be curried.",
-  "main": "index.js",
+  "main": "classlist-helper.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha --require babel-core/register",
+    "testwatch": "nyc mocha --watch --require babel-core/register"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/etoxin/classHelper.git"
   },
+  "keywords": [
+    "classes",
+    "css",
+    "browser"
+  ],
   "author": "Adam Lusted",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/etoxin/classHelper/issues"
   },
-  "homepage": "https://github.com/etoxin/classHelper#readme"
+  "homepage": "https://github.com/etoxin/classHelper#readme",
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "lodash": "^4.17.10",
+    "mocha": "^5.2.0",
+    "mocha-jsdom": "^2.0.0",
+    "nyc": "^12.0.2"
+  }
 }
