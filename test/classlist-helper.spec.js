@@ -29,6 +29,22 @@ describe('classListHelper', function () {
             assert.equal(a, true);
             assert.equal(b, false);
         });
+        it('should accept "item" and return index', function () {
+            document.body.innerHTML = testdoms[0];
+            let el = document.querySelector('.foo');
+
+            let a = classListHelper(0, 'item', el);
+
+            assert.equal(a, 'foo')
+        });
+        it('should work with replace', function () {
+            document.body.innerHTML = testdoms[0];
+            let el = document.querySelector('.foo');
+
+            classListHelper(['foo', 'bam'], 'replace', el);
+
+            assert.equal(document.body.innerHTML, '<div class="bam bar"></div>');
+        });
         it('should be able to accept all classList single argument methods', function () {
             document.body.innerHTML = testdoms[1];
             let el = document.querySelector('.foo');
@@ -115,6 +131,14 @@ describe('classListHelper', function () {
             let hasFoo = map(els, curry(classListHelper)('bar')('contains'));
 
             assert.deepEqual(hasFoo, [true, false, false])
+        });
+        it('should return second class from each Element', function () {
+            document.body.innerHTML = testdoms[2];
+            let els = document.querySelectorAll('.foo');
+
+            let classes = map(els, curry(classListHelper)(1)('item'));
+
+            assert.deepEqual(classes, ['bar', 'boom', 'baz']);
         });
     });
 });

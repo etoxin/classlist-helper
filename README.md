@@ -60,3 +60,5 @@ let setActive = curry(classlistHelper)('active')('add');
 // Toggle a class 
 let toggleActive = curry(classlistHelper)('active')('toggle');
 ```
+
+*Note:* For more examples check the unity tests.
