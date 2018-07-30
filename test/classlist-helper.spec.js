@@ -37,6 +37,14 @@ describe('classListHelper', function () {
 
             assert.equal(a, 'foo')
         });
+        it('should accept an Array as the className', function () {
+            document.body.innerHTML = testdoms[0];
+            let el = document.querySelector('.foo');
+
+            classListHelper(['baz', 'zing'], 'add', el);
+
+            assert.equal(document.body.innerHTML, '<div class="foo bar baz zing"></div>');
+        });
         it('should work with replace', function () {
             document.body.innerHTML = testdoms[0];
             let el = document.querySelector('.foo');
@@ -51,6 +59,7 @@ describe('classListHelper', function () {
 
             classListHelper('bam', 'add', el);
             classListHelper('bingo', 'add', el);
+            classListHelper(['zing', 'zapp'], 'add', el);
             classListHelper('boom', 'remove', el);
             classListHelper('kazzam', 'toggle', el);
             assert.equal(el.classList.contains('kazzam'), true);
@@ -60,6 +69,8 @@ describe('classListHelper', function () {
             assert.equal(el.classList.contains('bingo'), true);
             assert.equal(el.classList.contains('boom'), false);
             assert.equal(el.classList.contains('kazzam'), false);
+            assert.equal(el.classList.contains('zing'), true);
+            assert.equal(el.classList.contains('zapp'), true);
         });
         it('should add class "boom" to div', () => {
             document.body.innerHTML = testdoms[0];
@@ -139,6 +150,22 @@ describe('classListHelper', function () {
             let classes = map(els, curry(classListHelper)(1)('item'));
 
             assert.deepEqual(classes, ['bar', 'boom', 'baz']);
+        });
+        it('should work with Arrays', function () {
+            document.body.innerHTML = testdoms[2];
+            let els = document.querySelectorAll('.foo');
+
+            map(els, curry(classListHelper)(['zapp', 'zorg'])('add'));
+
+            assert.equal(document.body.innerHTML, '<div class="foo bar zapp zorg"></div><div class="foo boom zapp zorg"></div><div class="foo baz zapp zorg"></div>');
+        });
+        it('should work with replace', function () {
+            document.body.innerHTML = testdoms[2];
+            let els = document.querySelectorAll('.foo');
+
+            map(els, curry(classListHelper)(['foo', 'woo'])('replace'));
+
+            assert.equal(document.body.innerHTML, '<div class="woo bar"></div><div class="woo boom"></div><div class="woo baz"></div>');
         });
     });
 });

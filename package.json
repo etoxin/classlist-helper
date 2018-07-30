@@ -1,6 +1,6 @@
 {
   "name": "classlist-helper",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A simple Element.classList helper that can be curried.",
   "main": "classlist-helper.js",
   "scripts": {
