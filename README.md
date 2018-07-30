@@ -59,6 +59,15 @@ let setActive = curry(classlistHelper)('active')('add');
 
 // Toggle a class 
 let toggleActive = curry(classlistHelper)('active')('toggle');
+
+// Add multiple classes / Pass an Array
+let setMultiple = curry(classlistHelper)(['active','updated'])('add');
+
+// Test all elements in an Array for a class
+let anyActive = curry(classlistHelper)('active')('contains');
+
+// Replace a class with another.
+let setInactive = curry(classlistHelper)(['active', 'inactive'])('replace');
 ```
 
 *Note:* For more examples check the unity tests.
