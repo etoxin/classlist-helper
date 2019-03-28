@@ -1,5 +1,7 @@
 # classList Helper
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/996032705cfd4bfaadbc831907320ac5)](https://app.codacy.com/app/etoxin/classlist-helper?utm_source=github.com&utm_medium=referral&utm_content=etoxin/classlist-helper&utm_campaign=Badge_Grade_Dashboard)
+
 An Element.classList method helper function that can be curried for functional programing.
 
 ### Example 
